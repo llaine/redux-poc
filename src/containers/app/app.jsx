@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     return (
         <div>
-          <p>Welcome to my website!</p>
+          <a href="/">Home</a><a href="/about">About</a>
           <div>{this.props.children}</div>
         </div>
     )

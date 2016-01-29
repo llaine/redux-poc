@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { Router, Route, IndexRoute } from 'react-router';
+import { browserHistory } from 'react-router'
 
 import {
   App,
@@ -10,11 +10,10 @@ import {
 
 
 export default (
-    <Router history={createBrowserHistory()}>
+    <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
-        <Route path="home" component={Home}/>
-        <Route path="about" component={App}/>
+        <Route path="about" component={About} />
       </Route>
     </Router>
 );
