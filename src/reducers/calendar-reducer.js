@@ -9,6 +9,7 @@ const initialState = [];
  * @returns {*}
  */
 function reducer(state = initialState, action) {
+  console.log(state, action);
   switch (action.type) {
     case actions.LOAD_CALENDAR_REQUEST:
       return { ...state, fetching_calendar:true };

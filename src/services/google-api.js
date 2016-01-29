@@ -10,3 +10,19 @@ export function authenticateUser(callback) {
 
   gapi.auth.authorize(params, callback);
 }
+
+export function loadCalendars() {
+  return new Promise(function (resolve, reject) {
+    gapi.client.load('calendar', 'v3', function() {
+      const request = gapi.client.calendar.calendarList.list();
+      request.execute(
+        function(resp){
+          resolve(resp.items);
+        },
+        function(error) {
+          reject(error);
+        }
+      );
+    });
+  });
+}

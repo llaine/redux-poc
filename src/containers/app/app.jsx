@@ -9,9 +9,13 @@ class App extends Component {
     super(...arguments)
   }
 
+  componentDidMount() {
+    //const { dispatch } = this.props;
+    //dispatch(connectUser())
+  }
+
   connectUser() {
     const { dispatch } = this.props;
-
     dispatch(connectUser())
   }
 
@@ -24,9 +28,10 @@ class App extends Component {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/calendars">Calendars</Link></li>
           { this.props.user.connected ? profileUser : notConnected}
         </ul>
-        {this.props.children}
+        { this.props.user.connected ? this.props.children : null }
       </div>
     )
   }

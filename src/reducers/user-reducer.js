@@ -7,7 +7,6 @@ import * as actions from '../actions/user-actions';
  * @returns {*}
  */
 function reducer(state = {}, action) {
-  console.log(state, action);
   switch (action.type) {
     case actions.CONNECT_USER_REQUEST:
       return {
