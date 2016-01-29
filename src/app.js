@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools';
-import { syncHistory, routeReducer } from 'react-router-redux'
 
 import routes from './routes';
 import store from './store';
 
 let rootElement = null;
+
 if (process.env.DEVTOOLS) {
   console.info('redux devtools active, to hide the panel: ctrl+H, to change position: ctrl+Q - for more infos', 'https://github.com/gaearon/redux-devtools');
   rootElement = (

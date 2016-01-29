@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class App extends Component {
   constructor() {
@@ -8,7 +9,7 @@ export default class App extends Component {
   render() {
     return (
         <div>
-          <a href="/">Home</a><a href="/about">About</a>
+          <Link to="/">Home</Link><Link to="/about">About</Link>
           <div>{this.props.children}</div>
         </div>
     )
