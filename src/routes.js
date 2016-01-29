@@ -8,7 +8,6 @@ import {
   About
 } from './containers/index';
 
-
 export default (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
