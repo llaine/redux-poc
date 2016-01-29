@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+import { connectUser, authenticateUserSuccess } from '../../actions/user-actions';
+
+class App extends Component {
   constructor() {
     super(...arguments)
   }
 
+  connectUser() {
+    const { dispatch } = this.props;
+
+    dispatch(connectUser())
+  }
+
   render() {
+    let profileUser = (<p>You are connected</p>);
+    let notConnected = (<p>You are not connected <button onClick={this.connectUser.bind(this)}>Connect</button></p>);
+
     return (
-        <div>
-          <Link to="/">Home</Link><Link to="/about">About</Link>
-          <div>{this.props.children}</div>
-        </div>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          { this.props.user.connected ? profileUser : notConnected}
+        </ul>
+        {this.props.children}
+      </div>
     )
   }
 }
+
+export default connect(state => ({ user: state.user }))(App);

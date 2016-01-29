@@ -7,13 +7,27 @@ import * as actions from '../actions/user-actions';
  * @returns {*}
  */
 function reducer(state = {}, action) {
+  console.log(state, action);
   switch (action.type) {
     case actions.CONNECT_USER_REQUEST:
-      return { ...state, fetching_user:true };
+      return {
+        ...state,
+        fetching_user:true,
+        connected:false
+      };
     case actions.CONNECT_USER_SUCCESS:
-      return { ...state, fetching_user:false };
+      return {
+        ...state,
+        fetching_user:false,
+        connected:true
+      };
     case actions.CONNECT_USER_FAILURE:
-      return { ...state, fetching_user:false, error:action.error };
+      return {
+        ...state,
+        fetching_user:false,
+        connected:false,
+        error:action.error
+      };
     default:
       return state;
   }

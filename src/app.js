@@ -5,7 +5,9 @@ import { Provider } from 'react-redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools';
 
 import routes from './routes';
-import store from './store';
+import configureStore from './store';
+
+const store = configureStore();
 
 let rootElement = null;
 
@@ -22,7 +24,6 @@ if (process.env.DEVTOOLS) {
     </Provider>
   );
 } else {
-  console.info('redux dev tools disabled');
   rootElement = (
     <Provider store={store}>
       {routes}
@@ -30,4 +31,10 @@ if (process.env.DEVTOOLS) {
   );
 }
 
-ReactDOM.render(rootElement, document.getElementById('root'));
+
+document.onreadystatechange = function () {
+  var state = document.readyState;
+  if (state == 'complete') {
+    ReactDOM.render(rootElement, document.getElementById('root'));
+  }
+};
