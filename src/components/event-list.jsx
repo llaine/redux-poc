@@ -6,6 +6,14 @@ export default class EventList extends Component {
   }
 
   render() {
-    // TODO 
+    const list = this.props.events.map((event) => {
+      return <div key={event.id}>
+        <p><strong>{event.startDate}</strong></p>
+        <p>{event.summary} {event.location}</p>
+        <a target="_blank" href={event.link}>Plus d'informations</a>
+      </div>
+    });
+
+    return (<div>{list}</div>)
   }
 }

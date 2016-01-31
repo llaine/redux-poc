@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import CalendarList from '../../components/calendar-list.jsx';
 
 import { fetchCalendars } from '../../actions/calendar-actions';
-import { fetchEventsFromCalendar } from '../../actions/event-actions';
 
 class Calendar extends Component {
   constructor() {

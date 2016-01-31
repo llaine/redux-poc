@@ -31,5 +31,12 @@ export function loadEventsFailure(calendarId, error) {
 export function fetchEventsFromCalendar(calendarId) {
   return dispatch => {
     dispatch(loadEvents(calendarId));
+    loadEventsService(calendarId)
+      .then((response) => {
+        dispatch(loadEventsSuccess(calendarId, response))
+      })
+      .catch((error) => {
+        dispatch(loadEventsFailure(calendarId, error))
+      });
   }
 }
