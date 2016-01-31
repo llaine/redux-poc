@@ -9,11 +9,6 @@ class App extends Component {
     super(...arguments)
   }
 
-  componentDidMount() {
-    //const { dispatch } = this.props;
-    //dispatch(connectUser())
-  }
-
   connectUser() {
     const { dispatch } = this.props;
     dispatch(connectUser())

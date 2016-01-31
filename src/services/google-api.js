@@ -26,3 +26,31 @@ export function loadCalendars() {
     });
   });
 }
+
+export function loadEvents(calendarId) {
+  return new Promise(function(resolve, reject) {
+    // Toujours loader les calendrier avant
+    gapi.client.load('calendar', 'v3', function() {
+      const request = gapi.client.calendar.events.list({
+        // J'affiche les events que à partir d'aujourd'hui
+        'timeMin': (new Date()).toISOString(),
+        'calendarId': calendarId,
+        'showDeleted': false,
+        'singleEvents': true,
+        // J'affiche uniquement une 10aine d'évenements, parce que sinon on s'en sort plus.
+        'maxResults': 10,
+        'orderBy': 'startTime'
+      });
+      request.execute(
+        function(resp) {
+          const events = resp.items;
+          resolve(events);
+        },
+        function(error) {
+          reject(error);
+        }
+      );
+    });
+  });
+}
+

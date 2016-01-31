@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CalendarList from '../../components/calendar-list.jsx';
 
 import { fetchCalendars } from '../../actions/calendar-actions';
+import { fetchEventsFromCalendar } from '../../actions/event-actions';
 
 class Calendar extends Component {
   constructor() {
@@ -18,7 +19,10 @@ class Calendar extends Component {
   render() {
     return (
       <div>
-        { this.props.calendars.fetching_calendar ? 'Loading' : <CalendarList calendars={this.props.calendars.response}/>}
+        { this.props.calendars.fetching_calendar ?
+            'Loading calendars ... ' :
+            <CalendarList calendars={this.props.calendars.response} />
+        }
       </div>
     );
   }

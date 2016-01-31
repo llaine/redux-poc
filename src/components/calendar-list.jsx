@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class CalendarList extends Component {
   constructor() {
@@ -23,6 +24,7 @@ export default class CalendarList extends Component {
               <div className="panel-body" style={divStyle}>
                 <div>
                   {calendar.description} - {calendar.summary}
+                  <Link to={`/events/${calendar.id}`}>Voir les events de ce calendrier</Link>
                 </div>
               </div>
             </div>

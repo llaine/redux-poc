@@ -6,7 +6,8 @@ import {
   App,
   Home,
   About,
-  Calendars
+  Calendars,
+  Events
 } from './containers/index';
 
 export default (
@@ -15,6 +16,9 @@ export default (
         <IndexRoute component={Home}/>
         <Route path="calendars" component={Calendars} />
         <Route path="about" component={About} />
+        <Route path="events" component={Events}>
+          <Route path="/events/:calendarId" component={Events}/>
+        </Route>
       </Route>
     </Router>
 );
